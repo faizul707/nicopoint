@@ -1,0 +1,69 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * NIXGO9 — Order complete (receipt printer)
+ * Opened after checkout: order-complete.php?order=NX-...
+ * Without ?order it shows the last order placed in this browser session.
+ */
+
+require_once __DIR__ . '/includes/core/config.php';
+require_once __DIR__ . '/includes/core/orders.php';
+require_once __DIR__ . '/includes/core/customer-auth.php';
+
+nix_customer_start();   // same session as checkout.php — must run before header.php
+
+require_once __DIR__ . '/includes/components/receipt-printer.php';
+
+$orderNumber = (string)($_GET['order'] ?? ($_SESSION['nix_last_order'] ?? ''));
+$receipt = null;
+try {
+    $receipt = nix_receipt_load($orderNumber);
+} catch (Throwable $e) {
+    error_log('NIXGO9 order-complete: ' . $e->getMessage());
+}
+
+if ($receipt) {
+    // The order exists, so make sure the cart is empty.
+    unset($_SESSION['cart']);
+}
+
+$page = [
+    'title'       => 'Order received | NIXGO9',
+    'description' => 'Your NIXGO9 order has been received.',
+    'keywords'    => 'order complete',
+    'canonical'   => BASE_URL . 'order-complete.php',
+    'body_class'  => 'order-complete-page',
+];
+
+require_once __DIR__ . '/includes/layout/header.php';
+?>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<?= CSS_PATH ?>receipt-printer.css?v=1">
+<style>
+    .nxo{min-height:80vh;padding:clamp(48px,8vw,96px) 16px 96px;background:radial-gradient(60% 50% at 50% 12%,#1d4a31,#08190F 70%);color:#EEF2EC;text-align:center;font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif}
+    .nxo h1{text-transform:none;font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif;font-size:clamp(34px,6vw,56px);font-weight:800;letter-spacing:-.035em;line-height:1;margin:0 0 10px;color:#EEF2EC}
+    .nxo h1 em{font-family:'Instrument Serif',Georgia,serif;font-weight:400;color:#D9B45A}
+    .nxo .nxo-lead{color:#9FB3A7;max-width:44ch;margin:0 auto 36px;font-size:16px}
+    .nxo .nxr-actions .nxr-btn{background:#EEF2EC}
+    .nxo .nxr-actions .nxr-btn-gold{background:#D9B45A}
+    .nxo-miss{max-width:480px;margin:0 auto;padding:28px;border:1px solid rgba(238,242,236,.15);border-radius:20px}
+    .nxo-miss a{display:inline-flex;margin-top:18px;padding:12px 20px;border-radius:999px;background:#D9B45A;color:#08190F;font-weight:700;text-decoration:none}
+</style>
+
+<main id="main-content" class="nxo">
+    <?php if ($receipt): ?>
+        <h1>Thank you, <?= htmlspecialchars(strtok((string)$receipt['order']['customer_name'], ' ') ?: 'friend') ?>.</h1>
+        <p class="nxo-lead">We’ve received your order. You’ll get an email at <?= htmlspecialchars((string)$receipt['order']['customer_email']) ?> as it’s reviewed and shipped.</p>
+        <?php nix_receipt_printer($receipt['order'], $receipt['items']); ?>
+    <?php else: ?>
+        <h1>Order received</h1>
+        <div class="nxo-miss">
+            <p>We couldn’t show the receipt in this browser. If you placed an order, a confirmation will arrive by email.</p>
+            <a href="<?= BASE_URL ?>products.php">Continue shopping</a>
+        </div>
+    <?php endif; ?>
+</main>
+
+<?php require_once __DIR__ . '/includes/layout/footer.php'; ?>
+<script src="<?= JS_PATH ?>receipt-printer.js?v=1" defer></script>

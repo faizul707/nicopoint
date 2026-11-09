@@ -1,0 +1,2002 @@
+<?php
+
+/**
+ * ============================================================
+ * NIXGO9 — PRODUCTS PAGE
+ * ============================================================
+ */
+
+
+/* ============================================================
+   CORE CONFIGURATION
+   ============================================================ */
+
+require_once __DIR__ . '/includes/core/config.php';
+
+
+/* ============================================================
+   PAGE META
+   ============================================================ */
+
+$page = [
+
+    'title' => 'Products | NIXGO9',
+
+    'description' =>
+        'Explore the NIXGO9 premium nicotine pouch collection.',
+
+    'keywords' =>
+        'NIXGO9 products, nicotine pouches, premium flavours',
+
+    'canonical' =>
+        BASE_URL . 'products.php'
+
+];
+
+
+/* ============================================================
+   SHARED HEADER
+   ============================================================ */
+
+require_once __DIR__ . '/includes/layout/header.php';
+
+
+/* ============================================================
+   PRODUCT DATA
+   ============================================================ */
+
+$products = [
+
+    [
+        'slug'        => 'cool-mint',
+        'name'        => 'Cool Mint',
+        'category'    => 'Mint',
+        'profile'     => 'Cool • Fresh • Crisp',
+        'description' => 'Crisp, fresh and cooling with a clean mint profile.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '12 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'SIGNATURE',
+        'theme'       => 'mint',
+        'number'      => '01',
+        'image'       => 'cool-mint.png',
+    ],
+
+    [
+        'slug'        => 'spearmint',
+        'name'        => 'Spearmint',
+        'category'    => 'Mint',
+        'profile'     => 'Cool • Crisp • Herbal',
+        'description' => 'A clean spearmint profile with a crisp and refreshing finish.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'CLASSIC',
+        'theme'       => 'spearmint',
+        'number'      => '02',
+        'image'       => 'spearmint.png',
+    ],
+
+    [
+        'slug'        => 'sweet-green-mint',
+        'name'        => 'Sweet Green Mint',
+        'category'    => 'Mint',
+        'profile'     => 'Sweet • Green • Cooling',
+        'description' => 'A softer green mint character with a naturally refreshing finish.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'FRESH',
+        'theme'       => 'green',
+        'number'      => '03',
+        'image'       => 'sweet-green-mint.png',
+    ],
+
+    [
+        'slug'        => 'menthol-freeze',
+        'name'        => 'Menthol Freeze',
+        'category'    => 'Mint',
+        'profile'     => 'Cold • Sharp • Intense',
+        'description' => 'An intense cooling character built around a sharp menthol finish.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'INTENSE',
+        'theme'       => 'ice',
+        'number'      => '04',
+        'image'       => 'menthol-freeze.png',
+    ],
+
+    [
+        'slug'        => 'tropical-mix',
+        'name'        => 'Tropical Mix',
+        'category'    => 'Fruit',
+        'profile'     => 'Tropical • Bright • Sweet',
+        'description' => 'A vibrant tropical profile with bright fruit character.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'TROPICAL',
+        'theme'       => 'tropical',
+        'number'      => '05',
+        'image'       => 'tropical-mix.png',
+    ],
+
+    [
+        'slug'        => 'mango-burst',
+        'name'        => 'Mango Burst',
+        'category'    => 'Fruit',
+        'profile'     => 'Smooth • Tropical • Sweet',
+        'description' => 'Smooth tropical mango character with a bright and expressive finish.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'FRUIT',
+        'theme'       => 'mango',
+        'number'      => '06',
+        'image'       => 'mango-burst.png',
+    ],
+
+    [
+        'slug'        => 'citrus-zest',
+        'name'        => 'Citrus Zest',
+        'category'    => 'Citrus',
+        'profile'     => 'Bright • Zesty • Refreshing',
+        'description' => 'Bright citrus notes delivering a lively and refreshing profile.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'ZEST',
+        'theme'       => 'citrus',
+        'number'      => '07',
+        'image'       => 'citrus-zest.png',
+    ],
+
+    [
+        'slug'        => 'watermelon',
+        'name'        => 'Watermelon',
+        'category'    => 'Fruit',
+        'profile'     => 'Juicy • Sweet • Fresh',
+        'description' => 'A juicy watermelon profile with a smooth refreshing character.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'JUICY',
+        'theme'       => 'watermelon',
+        'number'      => '08',
+        'image'       => 'watermelon.png',
+    ],
+
+    [
+        'slug'        => 'blueberry',
+        'name'        => 'Blueberry',
+        'category'    => 'Berry',
+        'profile'     => 'Rich • Fruity • Smooth',
+        'description' => 'A rich blueberry character with a smooth fruity finish.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'BERRY',
+        'theme'       => 'blueberry',
+        'number'      => '09',
+        'image'       => 'blueberry.png',
+    ],
+
+    [
+        'slug'        => 'strawberry-ice',
+        'name'        => 'Strawberry Ice',
+        'category'    => 'Berry',
+        'profile'     => 'Sweet • Fruity • Cool',
+        'description' => 'Sweet strawberry character balanced with a refreshing cooling note.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'COOL BERRY',
+        'theme'       => 'strawberry',
+        'number'      => '10',
+        'image'       => 'strawberry-ice.png',
+    ],
+
+    [
+        'slug'        => 'coffee',
+        'name'        => 'Coffee',
+        'category'    => 'Coffee',
+        'profile'     => 'Bold • Roasted • Rich',
+        'description' => 'A deeper roasted coffee profile designed for a distinctive finish.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'SIGNATURE',
+        'theme'       => 'coffee',
+        'number'      => '11',
+        'image'       => 'coffee.png',
+    ],
+
+    [
+        'slug'        => 'vanilla',
+        'name'        => 'Vanilla',
+        'category'    => 'Classic',
+        'profile'     => 'Soft • Creamy • Smooth',
+        'description' => 'A smooth vanilla profile with a soft and balanced character.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'CLASSIC',
+        'theme'       => 'vanilla',
+        'number'      => '12',
+        'image'       => 'Vanilla.png',
+    ],
+
+    [
+        'slug'        => 'cinnamon',
+        'name'        => 'Cinnamon',
+        'category'    => 'Classic',
+        'profile'     => 'Warm • Spiced • Bold',
+        'description' => 'A warm cinnamon profile with a distinctive spiced character.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'SPICED',
+        'theme'       => 'cinnamon',
+        'number'      => '13',
+        'image'       => 'cinnamon.png',
+    ],
+
+    [
+        'slug'        => 'ginger-lemon',
+        'name'        => 'Ginger Lemon',
+        'category'    => 'Citrus',
+        'profile'     => 'Zesty • Spiced • Bright',
+        'description' => 'A bright citrus profile layered with a warm ginger character.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'SIGNATURE',
+        'theme'       => 'ginger',
+        'number'      => '14',
+        'image'       => 'ginger-lemon.png',
+    ],
+
+    [
+        'slug'        => 'licorice',
+        'name'        => 'Licorice',
+        'category'    => 'Classic',
+        'profile'     => 'Deep • Herbal • Distinctive',
+        'description' => 'A distinctive herbal profile with deep and expressive character.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'ORIGINAL',
+        'theme'       => 'licorice',
+        'number'      => '15',
+        'image'       => 'licorice.png',
+    ],
+
+    [
+        'slug'        => 'cola-ice',
+        'name'        => 'Cola Ice',
+        'category'    => 'Classic',
+        'profile'     => 'Sweet • Fizzy • Cool',
+        'description' => 'A familiar cola character paired with a crisp cooling finish.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'COOL',
+        'theme'       => 'cola',
+        'number'      => '16',
+        'image'       => 'cola-ice.png',
+    ],
+
+    [
+        'slug'        => 'cherry',
+        'name'        => 'Cherry',
+        'category'    => 'Berry',
+        'profile'     => 'Sweet • Vibrant • Fruity',
+        'description' => 'Sweet and vibrant cherry character with a smooth finish.',
+        'strengths'   => ['04 MG', '10 MG', '20 MG'],
+        'default'     => '20 MG',
+        'format'      => '20 Pouches',
+        'price'       => '₹542',
+        'badge'       => 'LIMITED',
+        'theme'       => 'cherry',
+        'number'      => '17',
+        'image'       => 'cherry.png',
+    ],
+
+];
+
+?>
+
+<style>
+
+/* ============================================================
+   NIXGO9 — PRODUCTS PAGE
+   ============================================================ */
+
+.products-page {
+    --products-bg: #f8f7f2;
+    --products-dark: #11251d;
+    --products-green: #247653;
+    --products-gold: #d9bd68;
+    --products-muted: #6d756f;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--products-bg);
+    color: var(--products-dark);
+}
+
+
+/* ============================================================
+   ATMOSPHERE
+   ============================================================ */
+
+.products-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 12% 12%,
+            rgba(36,118,83,.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 28%,
+            rgba(217,189,104,.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(135,66,102,.08),
+            transparent 35%
+        );
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.products-hero {
+    position: relative;
+    min-height: 82vh;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        110px 24px
+        90px;
+
+    isolation: isolate;
+}
+
+.products-hero-inner {
+    width: min(1180px, 100%);
+    margin: auto;
+
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(360px, .75fr);
+
+    gap: 70px;
+    align-items: center;
+}
+
+.products-hero-copy {
+    position: relative;
+    z-index: 2;
+}
+
+.products-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 24px;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+
+    color: var(--products-green);
+}
+
+.products-eyebrow::before {
+    content: "";
+    width: 32px;
+    height: 1px;
+
+    background: var(--products-gold);
+}
+
+.products-hero h1 {
+    max-width: 780px;
+    margin: 0;
+
+    font-size: clamp(58px, 7vw, 112px);
+    line-height: .88;
+    letter-spacing: -.065em;
+    font-weight: 800;
+}
+
+.products-hero h1 span {
+    display: block;
+    color: var(--products-green);
+}
+
+.products-hero-description {
+    max-width: 580px;
+
+    margin:
+        30px 0
+        0;
+
+    color: var(--products-muted);
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.products-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 32px;
+}
+
+.products-hero-meta span {
+    padding: 10px 14px;
+
+    border: 1px solid rgba(36,118,83,.12);
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.65);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+
+/* ============================================================
+   HERO VISUAL
+   ============================================================ */
+
+.products-hero-visual {
+    position: relative;
+
+    min-height: 480px;
+
+    display: grid;
+    place-items: center;
+}
+
+.products-orbit {
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border: 1px solid rgba(36,118,83,.14);
+    border-radius: 50%;
+
+    animation: productsOrbit 18s linear infinite;
+}
+
+.products-orbit::before,
+.products-orbit::after {
+    content: "";
+    position: absolute;
+
+    border-radius: 50%;
+}
+
+.products-orbit::before {
+    width: 8px;
+    height: 8px;
+
+    top: 18px;
+    left: 50%;
+
+    background: var(--products-gold);
+
+    box-shadow:
+        0 0 20px rgba(217,189,104,.7);
+}
+
+.products-orbit::after {
+    width: 5px;
+    height: 5px;
+
+    bottom: 70px;
+    right: 15px;
+
+    background: var(--products-green);
+}
+
+@keyframes productsOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.products-hero-can {
+    position: relative;
+    z-index: 2;
+
+    width: min(330px, 72vw);
+
+    filter:
+        drop-shadow(
+            0 40px 55px
+            rgba(17,37,29,.24)
+        );
+
+    animation:
+        productsFloat 5s ease-in-out infinite;
+}
+
+@keyframes productsFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+
+    50% {
+        transform: translateY(-18px) rotate(3deg);
+    }
+}
+
+.products-hero-badge {
+    position: absolute;
+    z-index: 3;
+
+    right: 4%;
+    bottom: 5%;
+
+    width: 120px;
+    height: 120px;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(217,189,104,.35);
+
+    border-radius: 50%;
+
+    background:
+        rgba(217,189,104,.94);
+
+    color: var(--products-dark);
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 50px rgba(17,37,29,.14);
+}
+
+.products-hero-badge strong {
+    display: block;
+
+    font-size: 26px;
+    line-height: 1;
+}
+
+.products-hero-badge span {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+
+/* ============================================================
+   COLLECTION INTRO
+   ============================================================ */
+
+.products-collection {
+    position: relative;
+    z-index: 2;
+
+    width: min(1240px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding:
+        90px 0
+        130px;
+}
+
+.products-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+
+    margin-bottom: 38px;
+}
+
+.products-section-heading h2 {
+    margin: 0;
+
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: .95;
+    letter-spacing: -.055em;
+}
+
+.products-section-heading h2 span {
+    color: var(--products-green);
+}
+
+.products-section-heading p {
+    max-width: 390px;
+    margin: 0;
+
+    color: var(--products-muted);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   FILTER BAR
+   ============================================================ */
+
+.products-toolbar {
+    position: sticky;
+    top: 92px;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 38px;
+    padding: 10px;
+
+    border:
+        1px solid
+        rgba(36,118,83,.10);
+
+    border-radius: 18px;
+
+    background:
+        rgba(248,247,242,.82);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 12px 40px
+        rgba(17,37,29,.06);
+}
+
+.products-search {
+    flex: 1;
+
+    min-width: 180px;
+
+    height: 48px;
+
+    padding: 0 18px;
+
+    border:
+        1px solid
+        rgba(36,118,83,.10);
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.7);
+
+    color: var(--products-dark);
+
+    outline: none;
+}
+
+.products-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.products-filter button {
+    height: 42px;
+
+    padding: 0 14px;
+
+    border:
+        1px solid
+        rgba(36,118,83,.10);
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.6);
+
+    color: var(--products-dark);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease;
+}
+
+.products-filter button:hover {
+    transform: translateY(-2px);
+}
+
+.products-filter button.is-active {
+    background: var(--products-green);
+    color: white;
+
+    box-shadow:
+        0 8px 20px
+        rgba(36,118,83,.18);
+}
+
+
+/* ============================================================
+   PRODUCT GRID
+   ============================================================ */
+
+.products-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.product-card {
+    --accent: #247653;
+
+    position: relative;
+
+    min-height: 540px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(36,118,83,.10);
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.92),
+            rgba(240,247,243,.72)
+        );
+
+    box-shadow:
+        0 20px 55px
+        rgba(17,37,29,.07);
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        box-shadow .45s ease;
+}
+
+.product-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            color-mix(
+                in srgb,
+                var(--accent) 20%,
+                transparent
+            ),
+            transparent 48%
+        );
+}
+
+.product-card:hover {
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 30px 70px
+        rgba(17,37,29,.14);
+}
+
+.product-card[data-theme="berry"] {
+    --accent: #874266;
+}
+
+.product-card[data-theme="mango"] {
+    --accent: #d99a32;
+}
+
+.product-card[data-theme="coffee"] {
+    --accent: #70442f;
+}
+
+.product-card[data-theme="citrus"] {
+    --accent: #c5a02d;
+}
+
+.product-card[data-theme="ice"] {
+    --accent: #4a9cae;
+}
+
+.product-card[data-theme="blueberry"] {
+    --accent: #5968a8;
+}
+
+.product-card[data-theme="strawberry"] {
+    --accent: #b95772;
+}
+
+.product-card[data-theme="spearmint"],
+.product-card[data-theme="green"] {
+    --accent: #2d8c69;
+}
+
+
+/* ============================================================
+   PRODUCT VISUAL
+   ============================================================ */
+
+.product-card-visual {
+    position: relative;
+
+    height: 330px;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden;
+}
+
+.product-card-orb {
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            color-mix(
+                in srgb,
+                var(--accent) 25%,
+                transparent
+            ),
+            transparent 68%
+        );
+
+    filter: blur(2px);
+}
+
+.product-card-ring {
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border:
+        1px solid
+        color-mix(
+            in srgb,
+            var(--accent) 20%,
+            transparent
+        );
+
+    border-radius: 50%;
+}
+
+.product-card-product {
+    position: relative;
+    z-index: 2;
+
+    width: 185px;
+    height: 220px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #e9eee9
+        );
+
+    border:
+        1px solid
+        rgba(17,37,29,.10);
+
+    box-shadow:
+        0 28px 50px
+        rgba(17,37,29,.18);
+
+    transform:
+        rotate(-5deg);
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.product-card:hover .product-card-product {
+    transform:
+        translateY(-12px)
+        rotate(4deg)
+        scale(1.04);
+}
+
+.product-card-product-top {
+    width: 118px;
+    height: 118px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 40% 35%,
+            #203c31,
+            #07120e
+        );
+
+    border:
+        3px solid
+        var(--products-gold);
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(255,255,255,.18),
+        0 12px 30px
+        rgba(0,0,0,.25);
+
+    color: var(--products-gold);
+
+    font-size: 29px;
+    font-weight: 900;
+}
+
+.product-card-product-brand {
+    margin-top: 13px;
+
+    color: var(--products-green);
+
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: -.04em;
+}
+
+.product-card-product-name {
+    margin-top: 3px;
+
+    color: #30322e;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}
+
+
+/* ============================================================
+   PRODUCT INFO
+   ============================================================ */
+
+.product-card-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    padding: 0 24px 24px;
+}
+
+.product-card-badge {
+    display: inline-flex;
+    align-self: flex-start;
+
+    margin-bottom: 12px;
+
+    padding: 7px 10px;
+
+    border-radius: 999px;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--accent) 10%,
+            white
+        );
+
+    color: var(--accent);
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.product-card h3 {
+    margin: 0;
+
+    font-size: 28px;
+    letter-spacing: -.04em;
+}
+
+.product-card-profile {
+    margin: 7px 0 0;
+
+    color: var(--products-muted);
+
+    font-size: 12px;
+}
+
+.product-card-meta {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+
+    margin-top: 18px;
+}
+
+.product-card-meta span {
+    padding: 7px 9px;
+
+    border:
+        1px solid
+        rgba(36,118,83,.09);
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.6);
+
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.product-card-footer {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    margin-top: auto;
+    padding-top: 22px;
+}
+
+.product-card-price {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -.03em;
+}
+
+.product-card-price small {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: var(--products-muted);
+
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.product-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 11px 15px;
+
+    border-radius: 999px;
+
+    background: var(--products-dark);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.product-card-link:hover {
+    transform: translateY(-2px);
+
+    background: var(--products-green);
+}
+
+
+/* ============================================================
+   18+ NOTICE
+   ============================================================ */
+
+.products-age-notice {
+    margin-top: 65px;
+    padding: 20px 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    border:
+        1px solid
+        rgba(170,115,30,.20);
+
+    border-radius: 18px;
+
+    background:
+        rgba(217,189,104,.09);
+
+    color: #5f5130;
+}
+
+.products-age-icon {
+    flex: 0 0 auto;
+
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--products-gold);
+
+    color: var(--products-dark);
+
+    font-weight: 900;
+}
+
+.products-age-notice strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.products-age-notice span {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.products-empty {
+    display: none;
+
+    padding: 80px 20px;
+
+    text-align: center;
+
+    color: var(--products-muted);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    .products-hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .products-hero {
+        min-height: auto;
+    }
+
+    .products-hero-visual {
+        min-height: 400px;
+    }
+
+    .products-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .products-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .products-search {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .products-hero {
+        padding:
+            70px 18px
+            45px;
+    }
+
+    .products-hero-inner {
+        gap: 25px;
+    }
+
+    .products-hero h1 {
+        font-size: clamp(52px, 16vw, 78px);
+    }
+
+    .products-hero-description {
+        font-size: 15px;
+    }
+
+    .products-hero-visual {
+        min-height: 340px;
+    }
+
+    .products-orbit {
+        width: 290px;
+        height: 290px;
+    }
+
+    .products-hero-can {
+        width: 230px;
+    }
+
+    .products-hero-badge {
+        width: 90px;
+        height: 90px;
+
+        right: 4%;
+        bottom: 0;
+    }
+
+    .products-hero-badge strong {
+        font-size: 19px;
+    }
+
+    .products-hero-badge span {
+        font-size: 7px;
+    }
+
+    .products-collection {
+        width: min(
+            100% - 28px,
+            560px
+        );
+
+        padding:
+            60px 0
+            80px;
+    }
+
+    .products-section-heading {
+        display: block;
+    }
+
+    .products-section-heading h2 {
+        font-size: 45px;
+    }
+
+    .products-section-heading p {
+        margin-top: 15px;
+    }
+
+    .products-toolbar {
+        position: relative;
+        top: auto;
+
+        padding: 9px;
+
+        border-radius: 15px;
+    }
+
+    .products-filter {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+
+        padding-bottom: 3px;
+
+        scrollbar-width: none;
+    }
+
+    .products-filter::-webkit-scrollbar {
+        display: none;
+    }
+
+    .products-filter button {
+        flex: 0 0 auto;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+    .product-card {
+        min-height: 500px;
+
+        border-radius: 24px;
+    }
+
+    .product-card-visual {
+        height: 290px;
+    }
+
+    .product-card-product {
+        width: 165px;
+        height: 200px;
+    }
+
+    .product-card-product-top {
+        width: 105px;
+        height: 105px;
+    }
+
+    .product-card-content {
+        padding:
+            0 20px
+            20px;
+    }
+
+    .products-age-notice {
+        align-items: flex-start;
+
+        padding: 18px;
+    }
+
+}
+
+
+/* ============================================================
+   REAL PRODUCT IMAGES
+   ============================================================ */
+
+.product-card-product {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.product-card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0 28px 38px rgba(17,37,29,.18));
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        filter .5s ease;
+}
+
+.product-card:hover .product-card-image {
+    transform:
+        translateY(-8px)
+        rotate(3deg)
+        scale(1.08);
+    filter: drop-shadow(0 34px 45px rgba(17,37,29,.22));
+}
+
+.products-hero-image {
+    display: block;
+    width: min(330px, 72vw);
+    height: auto;
+    max-height: 430px;
+    object-fit: contain;
+    filter: drop-shadow(0 40px 55px rgba(17,37,29,.24));
+}
+
+/* The old CSS placeholder elements are no longer used. */
+.product-card-product-top,
+.product-card-product-brand,
+.product-card-product-name {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .product-card-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .products-hero-image {
+        width: 230px;
+        max-height: 320px;
+    }
+}
+
+</style>
+
+
+<main
+    id="main-content"
+    class="products-page"
+>
+
+    <!-- ======================================================
+         HERO
+    ======================================================= -->
+
+    <section class="products-hero">
+
+        <div class="products-hero-inner">
+
+            <div class="products-hero-copy">
+
+                <span class="products-eyebrow">
+                    NIXGO9 PRODUCT UNIVERSE
+                </span>
+
+                <h1>
+                    Find Your
+                    <span>Perfect Pouch.</span>
+                </h1>
+
+                <p class="products-hero-description">
+                    Explore the NIXGO9 collection of distinctive
+                    flavour profiles, carefully developed for a
+                    cleaner, cooler and unmistakably premium experience.
+                </p>
+
+                <div class="products-hero-meta">
+                    <span>17 Flavours</span>
+                    <span>20 Pouches</span>
+                    <span>Multiple Strengths</span>
+                    <span>Premium Collection</span>
+                </div>
+
+            </div>
+
+
+            <div class="products-hero-visual">
+
+                <div
+                    class="products-orbit"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="products-hero-can"
+                    aria-hidden="true"
+                >
+                    <img
+                        class="products-hero-image"
+                        src="<?= IMG_PATH; ?>products/cool-mint.png"
+                        alt="NIXGO9 Cool Mint"
+                        loading="eager"
+                        decoding="async"
+                    >
+                </div>
+
+                <div class="products-hero-badge">
+
+                    <div>
+                        <strong>17</strong>
+                        <span>Flavours</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         COLLECTION
+    ======================================================= -->
+
+    <section
+        class="products-collection"
+        id="collection"
+    >
+
+        <div class="products-section-heading">
+
+            <div>
+
+                <span class="products-eyebrow">
+                    THE COLLECTION
+                </span>
+
+                <h2>
+                    Choose Your
+                    <span>Profile.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Explore the collection by flavour family,
+                strength and character.
+            </p>
+
+        </div>
+
+
+        <!-- ==================================================
+             TOOLBAR
+        =================================================== -->
+
+        <div class="products-toolbar">
+
+            <input
+                type="search"
+                id="productSearch"
+                class="products-search"
+                placeholder="Search flavours..."
+                aria-label="Search products"
+            >
+
+            <div
+                class="products-filter"
+                id="productFilters"
+            >
+
+                <button
+                    type="button"
+                    class="is-active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    data-filter="Mint"
+                >
+                    Mint
+                </button>
+
+                <button
+                    type="button"
+                    data-filter="Fruit"
+                >
+                    Fruit
+                </button>
+
+                <button
+                    type="button"
+                    data-filter="Berry"
+                >
+                    Berry
+                </button>
+
+                <button
+                    type="button"
+                    data-filter="Citrus"
+                >
+                    Citrus
+                </button>
+
+                <button
+                    type="button"
+                    data-filter="Coffee"
+                >
+                    Coffee
+                </button>
+
+                <button
+                    type="button"
+                    data-filter="Classic"
+                >
+                    Classic
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             PRODUCT GRID
+        =================================================== -->
+
+        <div
+            class="products-grid"
+            id="productsGrid"
+        >
+
+            <?php foreach ($products as $product): ?>
+
+                <article
+                    class="product-card"
+                    data-category="<?= htmlspecialchars($product['category']); ?>"
+                    data-name="<?= htmlspecialchars(strtolower($product['name'])); ?>"
+                    data-theme="<?= htmlspecialchars($product['theme']); ?>"
+                >
+
+                    <div class="product-card-visual">
+
+                        <div
+                            class="product-card-orb"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div
+                            class="product-card-ring"
+                            aria-hidden="true"
+                        ></div>
+
+                        <img
+                                class="product-card-image"
+                                src="<?= IMG_PATH; ?>products/<?= htmlspecialchars($product['image']); ?>"
+                                alt="NIXGO9 <?= htmlspecialchars($product['name']); ?>"
+                                loading="lazy"
+                                decoding="async"
+                            >
+
+                    </div>
+
+
+                    <div class="product-card-content">
+
+                        <span class="product-card-badge">
+                            <?= htmlspecialchars($product['badge']); ?>
+                        </span>
+
+                        <h3>
+                            <?= htmlspecialchars($product['name']); ?>
+                        </h3>
+
+                        <p class="product-card-profile">
+                            <?= htmlspecialchars($product['profile']); ?>
+                        </p>
+
+                        <div class="product-card-meta">
+
+                            <span>
+                                <?= htmlspecialchars($product['default']); ?>
+                            </span>
+
+                            <span>
+                                <?= htmlspecialchars($product['format']); ?>
+                            </span>
+
+                            <span>
+                                <?= htmlspecialchars($product['category']); ?>
+                            </span>
+
+                        </div>
+
+
+                        <div class="product-card-footer">
+
+                            <div class="product-card-price">
+
+                                <small>
+                                    Starting from
+                                </small>
+
+                                <?= htmlspecialchars($product['price']); ?>
+
+                            </div>
+
+
+                            <a
+                                href="product.php?slug=<?= urlencode($product['slug']); ?>"
+                                class="product-card-link"
+                            >
+                                Explore
+                                <span>↗</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            <?php endforeach; ?>
+
+        </div>
+
+
+        <div
+            class="products-empty"
+            id="productsEmpty"
+        >
+            No flavours found.
+        </div>
+
+
+        <!-- ==================================================
+             AGE NOTICE
+        =================================================== -->
+
+        <div class="products-age-notice">
+
+            <div class="products-age-icon">
+                ⚠
+            </div>
+
+            <div>
+
+                <strong>
+                    Adults 18+ only
+                </strong>
+
+                <span>
+                    This product contains nicotine.
+                    For adults 18+ only. Keep out of reach of children.
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const cards = [
+            ...document.querySelectorAll(".product-card")
+        ];
+
+        const filterButtons = [
+            ...document.querySelectorAll(
+                "#productFilters button"
+            )
+        ];
+
+        const search =
+            document.querySelector("#productSearch");
+
+        const emptyState =
+            document.querySelector("#productsEmpty");
+
+
+        let activeFilter = "all";
+
+
+        function filterProducts() {
+
+            const query =
+                search.value
+                    .trim()
+                    .toLowerCase();
+
+
+            let visibleCount = 0;
+
+
+            cards.forEach(
+                card => {
+
+                    const category =
+                        card.dataset.category;
+
+                    const name =
+                        card.dataset.name;
+
+
+                    const categoryMatch =
+                        activeFilter === "all" ||
+                        category === activeFilter;
+
+
+                    const searchMatch =
+                        !query ||
+                        name.includes(query);
+
+
+                    const visible =
+                        categoryMatch &&
+                        searchMatch;
+
+
+                    card.style.display =
+                        visible
+                            ? ""
+                            : "none";
+
+
+                    if (visible) {
+                        visibleCount++;
+                    }
+
+                }
+            );
+
+
+            emptyState.style.display =
+                visibleCount
+                    ? "none"
+                    : "block";
+
+        }
+
+
+        filterButtons.forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        filterButtons.forEach(
+                            item =>
+                                item.classList.remove(
+                                    "is-active"
+                                )
+                        );
+
+
+                        button.classList.add(
+                            "is-active"
+                        );
+
+
+                        activeFilter =
+                            button.dataset.filter;
+
+
+                        filterProducts();
+
+                    }
+                );
+
+            }
+        );
+
+
+        search.addEventListener(
+            "input",
+            filterProducts
+        );
+
+
+        /* ======================================================
+           CARD REVEAL
+        ======================================================= */
+
+        if (
+            "IntersectionObserver"
+            in window
+        ) {
+
+            const observer =
+                new IntersectionObserver(
+                    entries => {
+
+                        entries.forEach(
+                            entry => {
+
+                                if (
+                                    entry.isIntersecting
+                                ) {
+
+                                    entry.target.animate(
+                                        [
+                                            {
+                                                opacity: 0,
+                                                transform:
+                                                    "translateY(35px)"
+                                            },
+                                            {
+                                                opacity: 1,
+                                                transform:
+                                                    "translateY(0)"
+                                            }
+                                        ],
+                                        {
+                                            duration: 650,
+                                            easing:
+                                                "cubic-bezier(.2,.8,.2,1)",
+                                            fill:
+                                                "forwards"
+                                        }
+                                    );
+
+                                    observer.unobserve(
+                                        entry.target
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: .12
+                    }
+                );
+
+
+            cards.forEach(
+                card =>
+                    observer.observe(card)
+            );
+
+        }
+
+    }
+
+);
+
+</script>

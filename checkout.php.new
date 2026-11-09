@@ -1,0 +1,53 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/includes/core/config.php';
+if (session_status() === PHP_SESSION_NONE) session_start();
+$cart = $_SESSION['cart'] ?? [];
+if (!is_array($cart)) $cart = [];
+$totalItems = 0; $subtotal = 0.0; $items = [];
+foreach ($cart as $cartKey => $item) {
+    if (!is_array($item)) continue;
+    $quantity = max(1, (int)($item['quantity'] ?? 1));
+    $price = max(0, (float)($item['price'] ?? 0));
+    $name = (string)($item['name'] ?? 'Product');
+    $image = (string)($item['image'] ?? '');
+    $strength = (string)($item['strength'] ?? '');
+    $lineTotal = $price * $quantity;
+    $totalItems += $quantity; $subtotal += $lineTotal;
+    $items[] = ['key'=>(string)$cartKey,'name'=>$name,'image'=>$image,'strength'=>$strength,'quantity'=>$quantity,'price'=>$price,'line_total'=>$lineTotal];
+}
+if ($totalItems === 0) { header('Location: ' . BASE_URL . 'cart.php'); exit; }
+$page = ['title'=>'Checkout | NIXGO9','description'=>'Review your order details and provide the information required for order processing.','keywords'=>'checkout, order review','canonical'=>BASE_URL.'checkout.php','body_class'=>'checkout-page'];
+require_once __DIR__ . '/includes/layout/header.php';
+?>
+<link rel="stylesheet" href="<?= CSS_PATH ?>checkout.css">
+<main id="main-content" class="checkout-page">
+<div class="checkout-atmosphere" aria-hidden="true"><span class="checkout-orb checkout-orb-one"></span><span class="checkout-orb checkout-orb-two"></span><span class="checkout-ring checkout-ring-one"></span><span class="checkout-ring checkout-ring-two"></span></div>
+<section class="checkout-shell" aria-labelledby="checkout-title"><div class="checkout-container">
+<header class="checkout-header"><div class="checkout-eyebrow"><span></span> CHECKOUT</div><h1 id="checkout-title">Review.<br><em>Confirm.</em></h1><p>Review the information below before continuing with your order.</p></header>
+<div class="checkout-progress" aria-label="Checkout progress"><div class="checkout-progress-step is-active"><span>01</span><strong>Your details</strong></div><i></i><div class="checkout-progress-step"><span>02</span><strong>Delivery</strong></div><i></i><div class="checkout-progress-step"><span>03</span><strong>Review</strong></div></div>
+<div class="checkout-layout">
+<form class="checkout-form" id="checkoutForm" novalidate>
+<section class="checkout-card"><div class="card-index">01</div><div class="card-heading"><span>YOUR DETAILS</span><h2>Who should we<br><em>contact?</em></h2></div><div class="field-grid">
+<label class="field field-full"><span>Full name</span><input type="text" name="full_name" autocomplete="name" required maxlength="100" placeholder="Your full name"><small class="field-error"></small></label>
+<label class="field"><span>Email address</span><input type="email" name="email" autocomplete="email" required maxlength="160" placeholder="you@example.com"><small class="field-error"></small></label>
+<label class="field"><span>Phone</span><input type="tel" name="phone" autocomplete="tel" required maxlength="30" placeholder="Your phone number"><small class="field-error"></small></label>
+</div></section>
+<section class="checkout-card"><div class="card-index">02</div><div class="card-heading"><span>DELIVERY INFORMATION</span><h2>Where should the<br><em>order go?</em></h2></div><div class="field-grid">
+<label class="field field-full"><span>Address</span><input type="text" name="address" autocomplete="street-address" required maxlength="180" placeholder="Street address, building, area"><small class="field-error"></small></label>
+<label class="field"><span>City</span><input type="text" name="city" autocomplete="address-level2" required maxlength="80" placeholder="City"><small class="field-error"></small></label>
+<label class="field"><span>Postal code</span><input type="text" name="postal_code" autocomplete="postal-code" required maxlength="20" placeholder="Postal code"><small class="field-error"></small></label>
+<label class="field field-full"><span>Country</span><input type="text" name="country" autocomplete="country-name" required maxlength="80" placeholder="Country"><small class="field-error"></small></label>
+</div></section>
+<section class="checkout-card"><div class="card-index">03</div><div class="card-heading"><span>FINAL REVIEW</span><h2>Check every<br><em>detail.</em></h2></div>
+<div class="review-note"><span>✓</span><p>Review your selected items, quantities and totals before the order is submitted.</p></div>
+<label class="consent-row"><input type="checkbox" name="confirm_details" required><span>I confirm that the information I provided is accurate and I have reviewed my order details.</span></label><small class="field-error consent-error"></small>
+<button type="submit" class="checkout-submit" id="checkoutSubmit"><span>Continue</span><b aria-hidden="true">→</b></button>
+<p class="checkout-form-footnote">Payment processing is intentionally kept outside this interface until the appropriate compliant payment and order-processing integration is configured.</p>
+</section></form>
+<aside class="order-panel" aria-label="Order summary"><div class="order-panel-top"><span>YOUR ORDER</span><strong><?= $totalItems ?> <?= $totalItems === 1 ? 'item' : 'items' ?></strong></div><div class="order-items">
+<?php foreach ($items as $item): ?><article class="order-item"><div class="order-item-image"><?php if ($item['image'] !== ''): ?><img src="<?= IMG_PATH ?>products/<?= htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?>" loading="lazy" decoding="async"><?php endif; ?></div><div class="order-item-copy"><span><?= htmlspecialchars($item['strength'], ENT_QUOTES, 'UTF-8') ?></span><h3><?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?></h3><small>Qty <?= $item['quantity'] ?></small></div><strong>₹<?= number_format($item['line_total'], 0) ?></strong></article><?php endforeach; ?></div>
+<div class="order-total-block"><div><span>Subtotal</span><strong>₹<?= number_format($subtotal, 0) ?></strong></div><div><span>Delivery</span><strong>Calculated separately</strong></div><div class="grand-total"><span>Total</span><strong>₹<?= number_format($subtotal, 0) ?></strong></div></div>
+<a class="back-cart" href="<?= BASE_URL ?>cart.php">← Back to selection</a><div class="order-notice"><span>18+</span><p>Adult-only product category. Applicable age and destination requirements must be satisfied before any permitted order is processed.</p></div></aside>
+</div></div></section></main>
+<?php require_once __DIR__ . '/includes/layout/footer.php'; ?><script src="<?= JS_PATH ?>checkout.js"></script>

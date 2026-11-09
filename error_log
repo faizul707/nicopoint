@@ -1,0 +1,42 @@
+[04-Aug-2026 06:45:12 Australia/Sydney] PHP Warning:  require_once(/home/houseofb/test.wordpressforall.com/includes/config.php): Failed to open stream: No such file or directory in /home/houseofb/test.wordpressforall.com/index.php on line 17
+[04-Aug-2026 06:45:12 Australia/Sydney] PHP Fatal error:  Uncaught Error: Failed opening required '/home/houseofb/test.wordpressforall.com/includes/config.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/houseofb/test.wordpressforall.com/index.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/houseofb/test.wordpressforall.com/index.php on line 17
+[04-Aug-2026 06:45:16 Australia/Sydney] PHP Warning:  require_once(/home/houseofb/test.wordpressforall.com/includes/config.php): Failed to open stream: No such file or directory in /home/houseofb/test.wordpressforall.com/index.php on line 17
+[04-Aug-2026 06:45:16 Australia/Sydney] PHP Fatal error:  Uncaught Error: Failed opening required '/home/houseofb/test.wordpressforall.com/includes/config.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/houseofb/test.wordpressforall.com/index.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/houseofb/test.wordpressforall.com/index.php on line 17
+[04-Aug-2026 06:45:52 Australia/Sydney] PHP Warning:  require_once(/home/houseofb/test.wordpressforall.com/includes/config.php): Failed to open stream: No such file or directory in /home/houseofb/test.wordpressforall.com/index.php on line 17
+[04-Aug-2026 06:45:52 Australia/Sydney] PHP Fatal error:  Uncaught Error: Failed opening required '/home/houseofb/test.wordpressforall.com/includes/config.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/houseofb/test.wordpressforall.com/index.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/houseofb/test.wordpressforall.com/index.php on line 17
+[04-Aug-2026 06:52:45 Australia/Sydney] PHP Warning:  require_once(/home/houseofb/test.wordpressforall.com/includes/config.php): Failed to open stream: No such file or directory in /home/houseofb/test.wordpressforall.com/index.php on line 17
+[04-Aug-2026 06:52:45 Australia/Sydney] PHP Fatal error:  Uncaught Error: Failed opening required '/home/houseofb/test.wordpressforall.com/includes/config.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/houseofb/test.wordpressforall.com/index.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/houseofb/test.wordpressforall.com/index.php on line 17
+[11-Oct-2026 19:36:19 Asia/Kolkata] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'houseofb_test'@'localhost' (using password: YES) in /home/houseofb/test.wordpressforall.com/includes/core/order-db.php:41
+Stack trace:
+#0 /home/houseofb/test.wordpressforall.com/includes/core/order-db.php(41): PDO->__construct()
+#1 Command line code(4): nix_order_db()
+#2 {main}
+  thrown in /home/houseofb/test.wordpressforall.com/includes/core/order-db.php on line 41
+[11-Oct-2026 19:36:43 Asia/Kolkata] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'houseofb_test'@'localhost' (using password: YES) in /home/houseofb/test.wordpressforall.com/includes/core/order-db.php:41
+Stack trace:
+#0 /home/houseofb/test.wordpressforall.com/includes/core/order-db.php(41): PDO->__construct()
+#1 Command line code(4): nix_order_db()
+#2 {main}
+  thrown in /home/houseofb/test.wordpressforall.com/includes/core/order-db.php on line 41
+[12-Oct-2026 23:26:46 Asia/Kolkata] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'houseofb_test'@'localhost' (using password: YES) in /home/houseofb/test.wordpressforall.com/includes/core/order-db.php:41
+Stack trace:
+#0 /home/houseofb/test.wordpressforall.com/includes/core/order-db.php(41): PDO->__construct()
+#1 Command line code(1): nix_order_db()
+#2 {main}
+  thrown in /home/houseofb/test.wordpressforall.com/includes/core/order-db.php on line 41
+[12-Oct-2026 23:39:51 Asia/Kolkata] PHP Fatal error:  Uncaught Error: Call to undefined function system() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown in Command line code on line 1

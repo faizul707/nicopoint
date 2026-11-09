@@ -1,0 +1,18 @@
+NIXGO9 — Receipt printer on order-confirmation.php
+==================================================
+Back up order-confirmation.php first. Upload into the site root (same paths), overwrite:
+
+  order-confirmation.php                  receipt printer added above your order cards
+                                          + privacy fix: only the buyer (same browser) or the
+                                            signed-in customer with that email can view an order
+  checkout.php                            your ORIGINAL file (removes the extra redirect script
+                                          from the previous package — no longer needed)
+  includes/core/orders.php                remembers the last order in the session
+  includes/components/receipt-printer.php
+  assets/css/receipt-printer.css
+  assets/js/receipt-printer.js
+
+DELETE from the server (from the previous package, no longer used):
+  order-complete.php
+
+Your checkout.js and api/create-order.php are unchanged.

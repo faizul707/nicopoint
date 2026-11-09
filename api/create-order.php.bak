@@ -1,0 +1,80 @@
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/../includes/core/config.php';
+require_once __DIR__ . '/../includes/core/orders.php';
+
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['ok' => false, 'message' => 'Method not allowed.']);
+    exit;
+}
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+try {
+    $input = json_decode(file_get_contents('php://input'), true);
+    if (!is_array($input)) {
+        $input = $_POST;
+    }
+
+    if (!nix_order_check_csrf((string)($input['csrf_token'] ?? ''))) {
+        http_response_code(419);
+        echo json_encode(['ok' => false, 'message' => 'Security token expired. Please refresh checkout and try again.']);
+        exit;
+    }
+
+    [$customer, $errors] = nix_order_validate_checkout($input);
+
+    if ($errors) {
+        http_response_code(422);
+        echo json_encode(['ok' => false, 'message' => 'Please correct the highlighted details.', 'errors' => $errors]);
+        exit;
+    }
+
+    $cart = $_SESSION['cart'] ?? [];
+    if (!is_array($cart)) $cart = [];
+
+    $snapshot = nix_order_cart_snapshot($cart);
+
+    if ($snapshot['total_items'] < 1 || !$snapshot['items']) {
+        http_response_code(422);
+        echo json_encode(['ok' => false, 'message' => 'Your selection is empty. Please return to the selection page.']);
+        exit;
+    }
+
+    $order = nix_order_create(
+        $customer,
+        $snapshot,
+        !empty($input['age_confirmed'])
+    );
+
+    $_SESSION['last_order_id'] = $order['id'];
+    $_SESSION['last_order_number'] = $order['order_number'];
+
+    /*
+     * Do not clear the cart until payment/order-processing policy is
+     * finalized. This V1 records the order safely without claiming
+     * payment has completed.
+     */
+
+    echo json_encode([
+        'ok' => true,
+        'message' => 'Your order review has been recorded.',
+        'order_number' => $order['order_number'],
+        'redirect' => (defined('BASE_URL') ? BASE_URL : '/') . 'order-confirmation.php?order=' . rawurlencode($order['order_number']),
+    ]);
+} catch (Throwable $e) {
+    error_log('NIXGO9 create-order error: ' . $e->getMessage());
+
+    http_response_code(500);
+    echo json_encode([
+        'ok' => false,
+        'message' => 'We could not save the order right now. Please try again shortly.'
+    ]);
+}

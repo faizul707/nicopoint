@@ -1,0 +1,63 @@
+<?php
+/**
+ * ==========================================================
+ * Project Abdullah
+ * NIXGO9 Experience Platform
+ * Homepage Controller
+ * ==========================================================
+ */
+
+declare(strict_types=1);
+
+/*
+|--------------------------------------------------------------------------
+| Load Core Configuration
+|--------------------------------------------------------------------------
+*/
+
+require_once __DIR__ . '/includes/core/config.php';
+
+/*
+|--------------------------------------------------------------------------
+| Page Information
+|--------------------------------------------------------------------------
+*/
+
+$page = [
+    'title'       => 'NIXGO9 | Premium Tobacco-Free Nicotine Pouches',
+    'description' => 'Experience premium tobacco-free synthetic nicotine pouches manufactured by 3G Enterprises.',
+    'keywords'    => 'NIXGO9, Nicotine Pouches, Tobacco-Free',
+    'canonical'   => BASE_URL,
+    'body_class'  => 'homepage'
+];
+
+/*
+|--------------------------------------------------------------------------
+| Layout
+|--------------------------------------------------------------------------
+*/
+
+include __DIR__ . '/includes/layout/header.php';
+include __DIR__ . '/includes/layout/navbar.php';
+?>
+
+<main id="main-content">
+
+    <?php include __DIR__ . '/includes/scenes/opening-scene.php'; ?>
+
+<?php include __DIR__ . '/includes/scenes/explore-nixgo9-scene.php'; ?>
+
+<?php include __DIR__ . '/includes/scenes/premium-collection.php'; ?>
+
+<?php include __DIR__ . '/includes/scenes/certifications-scene.php'; ?>
+
+<?php include __DIR__ . '/includes/scenes/timeline-scene.php'; ?>
+
+<?php include __DIR__ . '/includes/scenes/final-scene.php'; ?>
+
+</main>
+
+<?php
+
+include __DIR__ . '/includes/layout/footer.php';
+include __DIR__ . '/includes/layout/scripts.php';
